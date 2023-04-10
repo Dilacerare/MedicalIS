@@ -25,3 +25,15 @@ C:\Users\leowa\Desktop\Кликай\Automarket\Automarket.Domain\obj\Debug\net6.
 C:\Users\leowa\Desktop\Кликай\Automarket\Automarket.Domain\obj\Debug\net6.0\refint\Automarket.Domain.dll
 C:\Users\leowa\Desktop\Кликай\Automarket\Automarket.Domain\obj\Debug\net6.0\Automarket.Domain.pdb
 C:\Users\leowa\Desktop\Кликай\Automarket\Automarket.Domain\obj\Debug\net6.0\ref\Automarket.Domain.dll
+D:\My files\Codes\C#\AutoMarket\Automarket\Automarket.Domain\bin\Debug\net6.0\Automarket.Domain.deps.json
+D:\My files\Codes\C#\AutoMarket\Automarket\Automarket.Domain\bin\Debug\net6.0\Automarket.Domain.dll
+D:\My files\Codes\C#\AutoMarket\Automarket\Automarket.Domain\bin\Debug\net6.0\Automarket.Domain.pdb
+D:\My files\Codes\C#\AutoMarket\Automarket\Automarket.Domain\obj\Debug\net6.0\Automarket.Domain.csproj.AssemblyReference.cache
+D:\My files\Codes\C#\AutoMarket\Automarket\Automarket.Domain\obj\Debug\net6.0\Automarket.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\My files\Codes\C#\AutoMarket\Automarket\Automarket.Domain\obj\Debug\net6.0\Automarket.Domain.AssemblyInfoInputs.cache
+D:\My files\Codes\C#\AutoMarket\Automarket\Automarket.Domain\obj\Debug\net6.0\Automarket.Domain.AssemblyInfo.cs
+D:\My files\Codes\C#\AutoMarket\Automarket\Automarket.Domain\obj\Debug\net6.0\Automarket.Domain.csproj.CoreCompileInputs.cache
+D:\My files\Codes\C#\AutoMarket\Automarket\Automarket.Domain\obj\Debug\net6.0\Automarket.Domain.dll
+D:\My files\Codes\C#\AutoMarket\Automarket\Automarket.Domain\obj\Debug\net6.0\refint\Automarket.Domain.dll
+D:\My files\Codes\C#\AutoMarket\Automarket\Automarket.Domain\obj\Debug\net6.0\Automarket.Domain.pdb
+D:\My files\Codes\C#\AutoMarket\Automarket\Automarket.Domain\obj\Debug\net6.0\ref\Automarket.Domain.dll

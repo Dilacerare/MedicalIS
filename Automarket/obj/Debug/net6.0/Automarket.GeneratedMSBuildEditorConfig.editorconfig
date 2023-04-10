@@ -5,68 +5,85 @@ build_property.UsingMicrosoftNETSdkWeb = true
 build_property.ProjectTypeGuids = 
 build_property.InvariantGlobalization = 
 build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Automarket
 build_property.RootNamespace = Automarket
-build_property.ProjectDir = C:\Users\leowa\Desktop\Кликай\Automarket\Automarket\
+build_property.ProjectDir = D:\My files\Codes\C#\AutoMarket\Automarket\Automarket\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = true
-build_property.MSBuildProjectDirectory = C:\Users\leowa\Desktop\Кликай\Automarket\Automarket
+build_property.MSBuildProjectDirectory = D:\My files\Codes\C#\AutoMarket\Automarket\Automarket
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/leowa/Desktop/Кликай/Automarket/Automarket/Views/Account/Login.cshtml]
+[D:/My files/Codes/C\#/AutoMarket/Automarket/Automarket/Views/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/leowa/Desktop/Кликай/Automarket/Automarket/Views/Account/Register.cshtml]
+[D:/My files/Codes/C\#/AutoMarket/Automarket/Automarket/Views/Account/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/leowa/Desktop/Кликай/Automarket/Automarket/Views/Car/Compare.cshtml]
+[D:/My files/Codes/C\#/AutoMarket/Automarket/Automarket/Views/Basket/Detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFza2V0XERldGFpbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/My files/Codes/C\#/AutoMarket/Automarket/Automarket/Views/Basket/GetItem.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFza2V0XEdldEl0ZW0uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/My files/Codes/C\#/AutoMarket/Automarket/Automarket/Views/Car/Compare.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FyXENvbXBhcmUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/leowa/Desktop/Кликай/Automarket/Automarket/Views/Car/GetCar.cshtml]
+[D:/My files/Codes/C\#/AutoMarket/Automarket/Automarket/Views/Car/GetCar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FyXEdldENhci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/leowa/Desktop/Кликай/Automarket/Automarket/Views/Car/GetCars.cshtml]
+[D:/My files/Codes/C\#/AutoMarket/Automarket/Automarket/Views/Car/GetCars.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FyXEdldENhcnMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/leowa/Desktop/Кликай/Automarket/Automarket/Views/Car/Save.cshtml]
+[D:/My files/Codes/C\#/AutoMarket/Automarket/Automarket/Views/Car/Save.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FyXFNhdmUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/leowa/Desktop/Кликай/Automarket/Automarket/Views/Home/Index.cshtml]
+[D:/My files/Codes/C\#/AutoMarket/Automarket/Automarket/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/leowa/Desktop/Кликай/Automarket/Automarket/Views/Profile/Detail.cshtml]
+[D:/My files/Codes/C\#/AutoMarket/Automarket/Automarket/Views/Order/CreateOrder.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcQ3JlYXRlT3JkZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/My files/Codes/C\#/AutoMarket/Automarket/Automarket/Views/Profile/Detail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxEZXRhaWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/leowa/Desktop/Кликай/Automarket/Automarket/Views/Shared/Error.cshtml]
+[D:/My files/Codes/C\#/AutoMarket/Automarket/Automarket/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/leowa/Desktop/Кликай/Automarket/Automarket/Views/Shared/_Layout.cshtml]
+[D:/My files/Codes/C\#/AutoMarket/Automarket/Automarket/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/leowa/Desktop/Кликай/Automarket/Automarket/Views/Shared/_ValidationScriptsPartial.cshtml]
+[D:/My files/Codes/C\#/AutoMarket/Automarket/Automarket/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/leowa/Desktop/Кликай/Automarket/Automarket/Views/User/GetUsers.cshtml]
+[D:/My files/Codes/C\#/AutoMarket/Automarket/Automarket/Views/User/GetUsers.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxHZXRVc2Vycy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/leowa/Desktop/Кликай/Automarket/Automarket/Views/_ViewImports.cshtml]
+[D:/My files/Codes/C\#/AutoMarket/Automarket/Automarket/Views/User/Save.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxTYXZlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/My files/Codes/C\#/AutoMarket/Automarket/Automarket/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/leowa/Desktop/Кликай/Automarket/Automarket/Views/_ViewStart.cshtml]
+[D:/My files/Codes/C\#/AutoMarket/Automarket/Automarket/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

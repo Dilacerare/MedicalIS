@@ -16,6 +16,7 @@ namespace Automarket
             services.AddScoped<IBaseRepository<Profile>, ProfileRepository>();
             services.AddScoped<IBaseRepository<Basket>, BasketRepository>();
             services.AddScoped<IBaseRepository<Order>, OrderRepository>();
+            services.AddScoped<IBaseRepository<PerfectHealth>, PerfectHealthRepository>();
         }
 
         public static void InitializeServices(this IServiceCollection services)
@@ -26,6 +27,7 @@ namespace Automarket
             services.AddScoped<IProfileService, ProfileService>();
             services.AddScoped<IBasketService, BasketService>();
             services.AddScoped<IOrderService, OrderService>();
+            services.AddScoped<IPerfectHealthService, PerfectHealthService>();
         }
     }
 }

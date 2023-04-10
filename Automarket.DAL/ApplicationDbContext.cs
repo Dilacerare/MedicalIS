@@ -21,6 +21,8 @@ namespace Automarket.DAL
         public DbSet<Basket> Baskets { get; set; }
         
         public DbSet<Order> Orders { get; set; }
+        
+        public DbSet<PerfectHealth> Healths { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -111,6 +113,21 @@ namespace Automarket.DAL
 
                 builder.HasOne(r => r.Basket).WithMany(t => t.Orders)
                     .HasForeignKey(r => r.BasketId);
+            });
+            
+            modelBuilder.Entity<PerfectHealth>(builder =>
+            {
+                builder.ToTable("PerfectHealths").HasKey(x => x.Id);
+                
+                builder.HasData(new PerfectHealth
+                {
+                    Id = 1,
+                    Temperature = 36.6,
+                    BloodPressure = "120/60",
+                    GUrineAnalysis = "Норма",
+                    GBloodTest = "Норма",
+                    Cholesterol = 5.2
+                });
             });
         }
     }

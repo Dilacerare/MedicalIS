@@ -1021,7 +1021,8 @@
         "dependencies": {
           "Automarket.Domain": "1.0.0",
           "Microsoft.EntityFrameworkCore": "6.0.4",
-          "Microsoft.EntityFrameworkCore.Relational": "6.0.4"
+          "Microsoft.EntityFrameworkCore.Relational": "6.0.4",
+          "Microsoft.EntityFrameworkCore.SqlServer": "6.0.4"
         },
         "runtime": {
           "Automarket.DAL.dll": {}

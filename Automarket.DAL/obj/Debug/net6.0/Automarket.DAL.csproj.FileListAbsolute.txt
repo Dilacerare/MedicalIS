@@ -29,3 +29,20 @@ C:\Users\leowa\Desktop\Кликай\Automarket\Automarket.DAL\obj\Debug\net6.0\A
 C:\Users\leowa\Desktop\Кликай\Automarket\Automarket.DAL\obj\Debug\net6.0\refint\Automarket.DAL.dll
 C:\Users\leowa\Desktop\Кликай\Automarket\Automarket.DAL\obj\Debug\net6.0\Automarket.DAL.pdb
 C:\Users\leowa\Desktop\Кликай\Automarket\Automarket.DAL\obj\Debug\net6.0\ref\Automarket.DAL.dll
+D:\My files\Codes\C#\AutoMarket\Automarket\Automarket.DAL\bin\Debug\net6.0\Automarket.DAL.deps.json
+D:\My files\Codes\C#\AutoMarket\Automarket\Automarket.DAL\bin\Debug\net6.0\Automarket.DAL.runtimeconfig.json
+D:\My files\Codes\C#\AutoMarket\Automarket\Automarket.DAL\bin\Debug\net6.0\Automarket.DAL.dll
+D:\My files\Codes\C#\AutoMarket\Automarket\Automarket.DAL\bin\Debug\net6.0\Automarket.DAL.pdb
+D:\My files\Codes\C#\AutoMarket\Automarket\Automarket.DAL\bin\Debug\net6.0\Automarket.Domain.dll
+D:\My files\Codes\C#\AutoMarket\Automarket\Automarket.DAL\bin\Debug\net6.0\Automarket.Domain.pdb
+D:\My files\Codes\C#\AutoMarket\Automarket\Automarket.DAL\obj\Debug\net6.0\Automarket.DAL.csproj.AssemblyReference.cache
+D:\My files\Codes\C#\AutoMarket\Automarket\Automarket.DAL\obj\Debug\net6.0\Automarket.DAL.GeneratedMSBuildEditorConfig.editorconfig
+D:\My files\Codes\C#\AutoMarket\Automarket\Automarket.DAL\obj\Debug\net6.0\Automarket.DAL.AssemblyInfoInputs.cache
+D:\My files\Codes\C#\AutoMarket\Automarket\Automarket.DAL\obj\Debug\net6.0\Automarket.DAL.AssemblyInfo.cs
+D:\My files\Codes\C#\AutoMarket\Automarket\Automarket.DAL\obj\Debug\net6.0\Automarket.DAL.csproj.CoreCompileInputs.cache
+D:\My files\Codes\C#\AutoMarket\Automarket\Automarket.DAL\obj\Debug\net6.0\Automarket.DAL.csproj.CopyComplete
+D:\My files\Codes\C#\AutoMarket\Automarket\Automarket.DAL\obj\Debug\net6.0\Automarket.DAL.dll
+D:\My files\Codes\C#\AutoMarket\Automarket\Automarket.DAL\obj\Debug\net6.0\refint\Automarket.DAL.dll
+D:\My files\Codes\C#\AutoMarket\Automarket\Automarket.DAL\obj\Debug\net6.0\Automarket.DAL.pdb
+D:\My files\Codes\C#\AutoMarket\Automarket\Automarket.DAL\obj\Debug\net6.0\Automarket.DAL.genruntimeconfig.cache
+D:\My files\Codes\C#\AutoMarket\Automarket\Automarket.DAL\obj\Debug\net6.0\ref\Automarket.DAL.dll

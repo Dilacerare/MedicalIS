@@ -1,13 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "QzF6ZzgywoAG53I7pJHYuvA638R03sJufyzgjtYftxBKpBA1viUWR5oOaUuhY+cg++rkT5IHCPXuXZIzEJaa5Q==",
+  "dgSpecHash": "Awc//mgxsQTGTVbgni6diW5KgIQeKtAHvzdNHBC1fqnidt5Rdmf8D2hy0fUSSGojpB3xHTsi3GGL5V0l8XcdtA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\leowa\\Desktop\\Кликай\\Automarket\\Automarket.Domain\\Automarket.Domain.csproj",
+  "projectFilePath": "D:\\My files\\Codes\\C#\\AutoMarket\\Automarket\\Automarket.Domain\\Automarket.Domain.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\leowa\\.nuget\\packages\\microsoft.aspnetcore.http.features\\6.0.0-preview.4.21253.5\\microsoft.aspnetcore.http.features.6.0.0-preview.4.21253.5.nupkg.sha512",
-    "C:\\Users\\leowa\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0-preview.4.21253.7\\microsoft.extensions.primitives.6.0.0-preview.4.21253.7.nupkg.sha512",
-    "C:\\Users\\leowa\\.nuget\\packages\\system.io.pipelines\\6.0.0-preview.4.21253.7\\system.io.pipelines.6.0.0-preview.4.21253.7.nupkg.sha512",
-    "C:\\Users\\leowa\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0-preview.4.21253.7\\system.runtime.compilerservices.unsafe.6.0.0-preview.4.21253.7.nupkg.sha512"
+    "C:\\Users\\aidar\\.nuget\\packages\\microsoft.aspnetcore.http.features\\6.0.0-preview.4.21253.5\\microsoft.aspnetcore.http.features.6.0.0-preview.4.21253.5.nupkg.sha512",
+    "C:\\Users\\aidar\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0-preview.4.21253.7\\microsoft.extensions.primitives.6.0.0-preview.4.21253.7.nupkg.sha512",
+    "C:\\Users\\aidar\\.nuget\\packages\\system.io.pipelines\\6.0.0-preview.4.21253.7\\system.io.pipelines.6.0.0-preview.4.21253.7.nupkg.sha512",
+    "C:\\Users\\aidar\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0-preview.4.21253.7\\system.runtime.compilerservices.unsafe.6.0.0-preview.4.21253.7.nupkg.sha512"
   ],
   "logs": []
 }

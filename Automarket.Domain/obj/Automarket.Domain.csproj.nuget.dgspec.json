@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\leowa\\Desktop\\Кликай\\Automarket\\Automarket.Domain\\Automarket.Domain.csproj": {}
+    "D:\\My files\\Codes\\C#\\AutoMarket\\Automarket\\Automarket.Domain\\Automarket.Domain.csproj": {}
   },
   "projects": {
-    "C:\\Users\\leowa\\Desktop\\Кликай\\Automarket\\Automarket.Domain\\Automarket.Domain.csproj": {
+    "D:\\My files\\Codes\\C#\\AutoMarket\\Automarket\\Automarket.Domain\\Automarket.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\leowa\\Desktop\\Кликай\\Automarket\\Automarket.Domain\\Automarket.Domain.csproj",
+        "projectUniqueName": "D:\\My files\\Codes\\C#\\AutoMarket\\Automarket\\Automarket.Domain\\Automarket.Domain.csproj",
         "projectName": "Automarket.Domain",
-        "projectPath": "C:\\Users\\leowa\\Desktop\\Кликай\\Automarket\\Automarket.Domain\\Automarket.Domain.csproj",
-        "packagesPath": "C:\\Users\\leowa\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\leowa\\Desktop\\Кликай\\Automarket\\Automarket.Domain\\obj\\",
+        "projectPath": "D:\\My files\\Codes\\C#\\AutoMarket\\Automarket\\Automarket.Domain\\Automarket.Domain.csproj",
+        "packagesPath": "C:\\Users\\aidar\\.nuget\\packages\\",
+        "outputPath": "D:\\My files\\Codes\\C#\\AutoMarket\\Automarket\\Automarket.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\leowa\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\aidar\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -51,7 +49,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -60,7 +59,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }
