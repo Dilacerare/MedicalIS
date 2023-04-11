@@ -1,0 +1,79 @@
+﻿
+
+@{
+    ViewBag.Title = "Список эталонных показателей";
+    Layout = "_Layout";
+}
+
+
+@if (Model == null)
+{
+    <div class="card col-md-12">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="https://images.wallpaperscraft.ru/image/single/bmw_fary_podsvetka_137326_1280x720.jpg"
+                     class="img-fluid rounded-start rounded">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Список пуст :(</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="padding: 10px;"></div>
+    <div class="card text-center">
+        <div class="card-header">
+            <ul class="nav nav-pills card-header-pills">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Active</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                </li>
+            </ul>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+}
+else
+{
+    <div class="row">
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">№/Id</th>
+                    <th scope="col">Температура</th>
+                    <th scope="col">Давление</th>
+                    <th scope="col">Общий анализ мочи</th>
+                    <th scope="col">Общий анализ крови</th>
+                    <th scope="col">Холестерин</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var health in Model)
+            {
+
+                <tr>
+                    @* ReSharper disable once HeapView.BoxingAllocation *@
+                    <th scope="row">@health.Id</th>
+                    @* ReSharper disable once HeapView.BoxingAllocation *@
+                    <td>@health.Temperature</td>
+                    <td>@health.BloodPressure</td>
+                    <td>@health.GUrineAnalysis</td>
+                    <td>@health.GBloodTest</td>
+                    @* ReSharper disable once HeapView.BoxingAllocation *@
+                    <td>@health.Cholesterol</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+}
