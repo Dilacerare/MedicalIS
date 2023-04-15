@@ -34,6 +34,24 @@ namespace Automarket.Controllers
             return StatusCode(StatusCodes.Status500InternalServerError);
         }
         
+        [HttpPost]
+        public async Task<IActionResult> SaveAnalyzes(ProfileViewModel model)
+        {
+            ModelState.Remove("Id");
+            ModelState.Remove("UserName");
+            ModelState.Remove("Age");
+            ModelState.Remove("Address");
+            if (ModelState.IsValid)
+            {
+                var response = await _profileService.SaveAnalyzes(model);
+                if (response.StatusCode == Domain.Enum.StatusCode.OK)
+                {
+                    return Json(new { description = response.Description });
+                }
+            }
+            return StatusCode(StatusCodes.Status500InternalServerError);
+        }
+        
         public async Task<IActionResult> Detail()
         {
             var userName = User.Identity.Name;

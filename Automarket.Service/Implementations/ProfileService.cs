@@ -36,7 +36,12 @@ namespace Automarket.Service.Implementations
                         Id = x.Id,
                         Address = x.Address,
                         Age = x.Age,
-                        UserName = x.User.Name
+                        UserName = x.User.Name,
+                        Temperature = x.Temperature,
+                        BloodPressure = x.BloodPressure,
+                        GUrineAnalysis = x.GUrineAnalysis,
+                        GBloodTest = x.GBloodTest,
+                        Cholesterol = x.Cholesterol
                     })
                     .FirstOrDefaultAsync(x => x.UserName == userName);
 
@@ -66,6 +71,39 @@ namespace Automarket.Service.Implementations
 
                 profile.Address = model.Address;
                 profile.Age = model.Age;
+
+                await _profileRepository.Update(profile);
+
+                return new BaseResponse<Profile>()
+                {
+                    Data = profile,
+                    Description = "Данные обновлены",
+                    StatusCode = StatusCode.OK
+                };
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"[ProfileService.Save] error: {ex.Message}");
+                return new BaseResponse<Profile>()
+                {
+                    StatusCode = StatusCode.InternalServerError,
+                    Description = $"Внутренняя ошибка: {ex.Message}"
+                };
+            }
+        }
+        
+        public async Task<BaseResponse<Profile>> SaveAnalyzes(ProfileViewModel model)
+        {
+            try
+            {
+                var profile = await _profileRepository.GetAll()
+                    .FirstOrDefaultAsync(x => x.Id == model.Id);
+                
+                profile.Temperature = model.Temperature;
+                profile.BloodPressure = model.BloodPressure;
+                profile.GUrineAnalysis = model.GUrineAnalysis;
+                profile.GBloodTest = model.GBloodTest;
+                profile.Cholesterol = model.Cholesterol;
 
                 await _profileRepository.Update(profile);
 

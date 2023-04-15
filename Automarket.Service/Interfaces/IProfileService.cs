@@ -12,5 +12,7 @@ namespace Automarket.Service.Interfaces
         Task<BaseResponse<ProfileViewModel>> GetProfile(string userName);
 
         Task<BaseResponse<Profile>> Save(ProfileViewModel model);
+        
+        Task<BaseResponse<Profile>> SaveAnalyzes(ProfileViewModel model);
     }
 }

@@ -53,7 +53,46 @@
 </div>
 <br />
 <div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <form id="profileFormAnalyzes">
+                        <input asp-for="Id" hidden="hidden"/>
+                        <h5 class="card-title">Ваши анализы</h5>
+                        <div class="mb-3">
+                            <label class="form-label text-black-50">Температура</label>
+                            <input type="text" class="form-control" asp-for="Temperature">
+                            @* <div class="form-text">Возраст должен быть указан от 0 до 150 лет.</div> *@
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label text-black-50">Давление</label>
+                            <input type="text" class="form-control" asp-for="BloodPressure">
+                            @* <div class="form-text">Возраст должен быть указан от 0 до 150 лет.</div> *@
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label text-black-50">Анализ мочи</label>
+                            <input type="text" class="form-control" asp-for="GUrineAnalysis">
+                            @* <div class="form-text">Возраст должен быть указан от 0 до 150 лет.</div> *@
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label text-black-50">Анализ крови</label>
+                            <input type="text" class="form-control" asp-for="GBloodTest">
+                            @* <div class="form-text">Возраст должен быть указан от 0 до 150 лет.</div> *@
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label text-black-50">Холестерин</label>
+                            <input type="text" class="form-control" asp-for="Cholesterol">
+                            @* <div class="form-text">Возраст должен быть указан от 0 до 150 лет.</div> *@
+                        </div>
+                        
+                        <div class="card-buttons-group">
+                            <button class='btn btn-primary' id='saveProfileAnalyzes'>Сохранить</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    <div class="col-sm-6">
         <div class="card text-center">
             <div class="card-header">
                 <ul class="nav nav-tabs card-header-tabs">
@@ -102,6 +141,32 @@
                 }
             });
         });
+        
+        $('#saveProfileAnalyzes').on('click', function (e) {
+                    e.preventDefault();
+                    const data = $('#profileFormAnalyzes').serialize()
+                    $.ajax({
+                        url: '@Url.Action("SaveAnalyzes", "Profile")',
+                        type: 'POST',
+                        data: data,
+                        success: function (response) {
+                            Swal.fire({
+                                title: 'Информация',
+                                text: response.description,
+                                icon: 'success',
+                                confirmButtonText: 'Окей'
+                            })
+                        },
+                        error: function (data) {
+                            Swal.fire({
+                                title: 'Информация',
+                                text: 'Ошибка валидации',
+                                icon: 'error',
+                                confirmButtonText: 'Окей'
+                            })
+                        }
+                    });
+                });
         
         $('#saveAccountId').on('click', function (e) {
             e.preventDefault();

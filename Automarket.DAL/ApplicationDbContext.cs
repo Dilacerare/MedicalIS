@@ -88,6 +88,11 @@ namespace Automarket.DAL
                 builder.Property(x => x.Id).ValueGeneratedOnAdd();
                 builder.Property(x => x.Age);
                 builder.Property(x => x.Address).HasMaxLength(200).IsRequired(false);
+                builder.Property(x => x.Temperature);
+                builder.Property(x => x.BloodPressure).HasMaxLength(200).IsRequired(false);
+                builder.Property(x => x.GUrineAnalysis).HasMaxLength(200).IsRequired(false);
+                builder.Property(x => x.GBloodTest).HasMaxLength(200).IsRequired(false);
+                builder.Property(x => x.Cholesterol);
                 
                 builder.HasData(new Profile()
                 {
