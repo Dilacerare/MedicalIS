@@ -96,7 +96,7 @@ public class PerfectHealthService : IPerfectHealthService
                 Temperature = model.Temperature,
                 BloodPressure = model.BloodPressure,
                 GUrineAnalysis = model.GUrineAnalysis,
-                GBloodTest = model.BloodPressure,
+                GBloodTest = model.GBloodTest,
                 Cholesterol = model.Cholesterol
             }; 
             await _healthRepository.Create(health);
@@ -178,7 +178,6 @@ public class PerfectHealthService : IPerfectHealthService
                 Data = health,
                 StatusCode = StatusCode.OK,
             };
-            // TypeCar
         }
         catch (Exception ex)
         {

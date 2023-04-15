@@ -5,6 +5,15 @@
     Layout = "_Layout";
 }
 
+<div style="padding: 5px;"></div>
+<div class="card col-md-12" style="margin: 10px;">
+    <div class="card-buttons-group">
+        @if (User.IsInRole("Admin"))
+        {
+            <button class='btn btn-success' id='addHealthId'>Добавить</button>   
+        }
+    </div>
+</div>
 
 @if (Model == null)
 {
@@ -45,9 +54,10 @@
 }
 else
 {
-    <div class="row">
-        <table class="table">
-            <thead class="thead-light">
+    <div style="padding: 5px;"></div>
+    <div class="card col-md-12">
+        <table class="table table-striped">
+            <thead class="table-light">
                 <tr>
                     <th scope="col">№/Id</th>
                     <th scope="col">Температура</th>
@@ -55,6 +65,7 @@ else
                     <th scope="col">Общий анализ мочи</th>
                     <th scope="col">Общий анализ крови</th>
                     <th scope="col">Холестерин</th>
+                    <th scope="col">#</th>
                 </tr>
             </thead>
             <tbody>
@@ -71,9 +82,64 @@ else
                     <td>@health.GBloodTest</td>
                     @* ReSharper disable once HeapView.BoxingAllocation *@
                     <td>@health.Cholesterol</td>
+                    <td>
+                        <form asp-controller="PerfectHealth" asp-action="DeleteHealth" asp-route-id="@health.Id" method="post">
+                            <button type="submit" class="btn btn-sm btn-danger">
+                                Удалить
+                            </button>
+                        </form>
+                    </td>
+                    
                 </tr>
             }
             </tbody>
         </table>
     </div>
+}
+
+@section pageScripts
+{
+    <script src="~/js/modal.js"></script>
+    <script>
+        let modal = $('#modal'); 
+        
+        $('#addHealthId').on('click', function () {
+           $.ajax({
+              type: 'GET',
+              url : '@Url.Action("Save")',
+              success: function (response) {
+                  modal.find(".modal-body").html(response);
+                  modal.modal('show')
+              },
+              failure: function () {
+                modal.modal('hide')
+              }
+          });
+       });
+        
+       $('#saveBtn').on('click', function () {
+           const data = $('#formSaveUser').serialize()
+           $.ajax({
+               type: 'POST',
+               url: '@Url.Action("Save")',
+               data: data,
+               success: function (data) {
+                   Swal.fire({
+                       title: 'Информация',
+                       text: data.description,
+                       icon: 'success',
+                       confirmButtonText: 'Окей'
+                   })
+               },
+               error: function (response) {
+                   Swal.fire({
+                       title: 'Информация',
+                       text: response.responseJSON.errorMessage,
+                       icon: 'error',
+                       confirmButtonText: 'Окей'
+                   })
+               }
+           })
+      });
+    </script>
 }
