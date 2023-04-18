@@ -23,6 +23,8 @@ namespace Automarket.DAL
         public DbSet<Order> Orders { get; set; }
         
         public DbSet<PerfectHealth> Healths { get; set; }
+        
+        public DbSet<Recommendation> Recommendations { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -62,6 +64,7 @@ namespace Automarket.DAL
                     .WithOne(x => x.User)
                     .HasPrincipalKey<User>(x => x.Id)
                     .OnDelete(DeleteBehavior.Cascade);
+                
             });
             
             modelBuilder.Entity<Car>(builder =>
@@ -99,6 +102,11 @@ namespace Automarket.DAL
                     Id = 1,
                     UserId = 1
                 });
+                
+                builder.HasMany(e => e.Recommendations)
+                    .WithOne(e => e.Patient)
+                    .HasPrincipalKey(x => x.Id)
+                    .OnDelete(DeleteBehavior.Cascade);
             });
             
             modelBuilder.Entity<Basket>(builder =>
@@ -132,6 +140,19 @@ namespace Automarket.DAL
                     GUrineAnalysis = "Норма",
                     GBloodTest = "Норма",
                     Cholesterol = 5.2
+                });
+            });
+            
+            modelBuilder.Entity<Recommendation>(builder =>
+            {
+                builder.ToTable("Recommendation").HasKey(x => x.Id);
+                
+                builder.HasData(new Recommendation
+                {
+                    Id = 1,
+                    ProfileId = 1,
+                    Author = "Admin",
+                    Description = "Живи"
                 });
             });
         }

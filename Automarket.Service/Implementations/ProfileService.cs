@@ -41,7 +41,8 @@ namespace Automarket.Service.Implementations
                         BloodPressure = x.BloodPressure,
                         GUrineAnalysis = x.GUrineAnalysis,
                         GBloodTest = x.GBloodTest,
-                        Cholesterol = x.Cholesterol
+                        Cholesterol = x.Cholesterol,
+                        Recommendations = x.Recommendations
                     })
                     .FirstOrDefaultAsync(x => x.UserName == userName);
 

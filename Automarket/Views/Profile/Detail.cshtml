@@ -54,63 +54,104 @@
 <br />
 <div class="row">
     <div class="col-sm-6">
-            <div class="card">
-                <div class="card-body">
-                    <form id="profileFormAnalyzes">
-                        <input asp-for="Id" hidden="hidden"/>
-                        <h5 class="card-title">Ваши анализы</h5>
-                        <div class="mb-3">
-                            <label class="form-label text-black-50">Температура</label>
-                            <input type="text" class="form-control" asp-for="Temperature">
-                            @* <div class="form-text">Возраст должен быть указан от 0 до 150 лет.</div> *@
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label text-black-50">Давление</label>
-                            <input type="text" class="form-control" asp-for="BloodPressure">
-                            @* <div class="form-text">Возраст должен быть указан от 0 до 150 лет.</div> *@
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label text-black-50">Анализ мочи</label>
-                            <input type="text" class="form-control" asp-for="GUrineAnalysis">
-                            @* <div class="form-text">Возраст должен быть указан от 0 до 150 лет.</div> *@
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label text-black-50">Анализ крови</label>
-                            <input type="text" class="form-control" asp-for="GBloodTest">
-                            @* <div class="form-text">Возраст должен быть указан от 0 до 150 лет.</div> *@
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label text-black-50">Холестерин</label>
-                            <input type="text" class="form-control" asp-for="Cholesterol">
-                            @* <div class="form-text">Возраст должен быть указан от 0 до 150 лет.</div> *@
-                        </div>
-                        
-                        <div class="card-buttons-group">
-                            <button class='btn btn-primary' id='saveProfileAnalyzes'>Сохранить</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    <div class="col-sm-6">
-        <div class="card text-center">
-            <div class="card-header">
-                <ul class="nav nav-tabs card-header-tabs">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="@Url.Action("Index", "Home")">Главная</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("GetCars", "Car")">Услуги</a>
-                    </li>
-                </ul>
-            </div>
+        <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Special title treatment</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <form id="profileFormAnalyzes">
+                    <input asp-for="Id" hidden="hidden"/>
+                    <h5 class="card-title">Ваши анализы</h5>
+                    <div class="mb-3">
+                        <label class="form-label text-black-50">Температура</label>
+                        <input type="text" class="form-control" asp-for="Temperature">
+                        @* <div class="form-text">Возраст должен быть указан от 0 до 150 лет.</div> *@
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label text-black-50">Давление</label>
+                        <input type="text" class="form-control" asp-for="BloodPressure">
+                        @* <div class="form-text">Возраст должен быть указан от 0 до 150 лет.</div> *@
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label text-black-50">Анализ мочи</label>
+                        <input type="text" class="form-control" asp-for="GUrineAnalysis">
+                        @* <div class="form-text">Возраст должен быть указан от 0 до 150 лет.</div> *@
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label text-black-50">Анализ крови</label>
+                        <input type="text" class="form-control" asp-for="GBloodTest">
+                        @* <div class="form-text">Возраст должен быть указан от 0 до 150 лет.</div> *@
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label text-black-50">Холестерин</label>
+                        <input type="text" class="form-control" asp-for="Cholesterol">
+                        @* <div class="form-text">Возраст должен быть указан от 0 до 150 лет.</div> *@
+                    </div>
+                        
+                    <div class="card-buttons-group">
+                        <button class='btn btn-primary' id='saveProfileAnalyzes'>Сохранить</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
+    
+    <div class="col-sm-6">
+        <div class="card p-3">
+            @if (Model.Recommendations != null)
+            {
+                <h5 class="card-title mt-1">Ваши рекомендации</h5>
+                <table class="table table-striped">
+                    <thead class="table-light">
+                    <tr>
+                        <th scope="col">Автор</th>
+                        <th scope="col">Описание</th>
+                        <th scope="col">#</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach (var recommendations in Model.Recommendations)
+                    {
+
+                        <tr>
+                            <th scope="row">@recommendations.Author</th>
+                            <td>@recommendations.Description</td>
+                            <td>
+                                <form asp-controller="" asp-action="" asp-route-id="" method="post">
+                                    <button type="submit" class="btn btn-sm btn-danger">
+                                        Подробнее
+                                    </button>
+                                </form>
+                            </td>
+
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <h5 class="card-title mt-1">У вас ещё нет рекомендаций</h5>
+            }
+        </div>
+    </div>
+    
+    @* <div class="col-sm-6"> *@
+    @*     <div class="card text-center"> *@
+    @*         <div class="card-header"> *@
+    @*             <ul class="nav nav-tabs card-header-tabs"> *@
+    @*                 <li class="nav-item"> *@
+    @*                     <a class="nav-link active" href="@Url.Action("Index", "Home")">Главная</a> *@
+    @*                 </li> *@
+    @*                 <li class="nav-item"> *@
+    @*                     <a class="nav-link" href="@Url.Action("GetCars", "Car")">Услуги</a> *@
+    @*                 </li> *@
+    @*             </ul> *@
+    @*         </div> *@
+    @*         <div class="card-body"> *@
+    @*             <h5 class="card-title">Special title treatment</h5> *@
+    @*             <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> *@
+    @*             <a href="#" class="btn btn-primary">Go somewhere</a> *@
+    @*         </div> *@
+    @*     </div> *@
+    @* </div> *@
 </div>
 
 @section pageScripts

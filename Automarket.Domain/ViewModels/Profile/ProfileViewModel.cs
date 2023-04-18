@@ -35,5 +35,7 @@ namespace Automarket.Domain.ViewModels.Profile
         
         [Required(ErrorMessage = "Введите холестерин")]
         public double Cholesterol { get; set; }
+        
+        public ICollection<Entity.Recommendation> Recommendations { get; set; }
     }
 }

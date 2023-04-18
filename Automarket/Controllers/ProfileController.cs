@@ -23,6 +23,12 @@ namespace Automarket.Controllers
         {
             ModelState.Remove("Id");
             ModelState.Remove("UserName");
+            ModelState.Remove("Recommendations");
+            ModelState.Remove("Temperature");
+            ModelState.Remove("BloodPressure");
+            ModelState.Remove("GUrineAnalysis");
+            ModelState.Remove("GBloodTest");
+            ModelState.Remove("Cholesterol");
             if (ModelState.IsValid)
             {
                 var response = await _profileService.Save(model);
@@ -41,6 +47,7 @@ namespace Automarket.Controllers
             ModelState.Remove("UserName");
             ModelState.Remove("Age");
             ModelState.Remove("Address");
+            ModelState.Remove("Recommendations");
             if (ModelState.IsValid)
             {
                 var response = await _profileService.SaveAnalyzes(model);
@@ -60,6 +67,7 @@ namespace Automarket.Controllers
             {
                 return View(response.Data);   
             }
+
             return View();
         }
     }

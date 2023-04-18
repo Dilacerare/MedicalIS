@@ -21,5 +21,7 @@
         public string GBloodTest { get; set; }
         
         public double Cholesterol { get; set; }
+        
+        public ICollection<Recommendation> Recommendations { get; set; }
     }
 }
