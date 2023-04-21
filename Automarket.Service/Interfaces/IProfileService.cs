@@ -9,6 +9,8 @@ namespace Automarket.Service.Interfaces
 {
     public interface IProfileService
     {
+        IBaseResponse<List<ProfileViewModel>> GetProfiles();
+        
         Task<BaseResponse<ProfileViewModel>> GetProfile(string userName);
 
         Task<BaseResponse<Profile>> Save(ProfileViewModel model);

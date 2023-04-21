@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
+using Automarket.Domain.Entity;
+using Automarket.Domain.Extensions;
 using Automarket.Domain.ViewModels.Profile;
+using Automarket.Domain.ViewModels.Recommendation;
 using Automarket.Service.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
@@ -12,10 +16,25 @@ namespace Automarket.Controllers
     public class ProfileController : Controller
     {
         private readonly IProfileService _profileService;
+        
+        private readonly IRecommendationService _recommendation;
 
-        public ProfileController(IProfileService profileService)
+        public ProfileController(IProfileService profileService, IRecommendationService recommendation)
         {
             _profileService = profileService;
+            _recommendation = recommendation;
+        }
+        
+        [Authorize(Roles = "Admin,Doctor")]
+        [HttpGet]
+        public IActionResult GetProfiles()
+        {
+            var response = _profileService.GetProfiles();
+            if (response.StatusCode == Domain.Enum.StatusCode.OK)
+            {
+                return View(response.Data);   
+            }
+            return View("Error", $"{response.Description}");
         }
 
         [HttpPost]
@@ -59,9 +78,9 @@ namespace Automarket.Controllers
             return StatusCode(StatusCodes.Status500InternalServerError);
         }
         
-        public async Task<IActionResult> Detail()
+        public async Task<IActionResult> Detail(string userName)
         {
-            var userName = User.Identity.Name;
+            // var userName = User.Identity.Name;
             var response = await _profileService.GetProfile(userName);
             if (response.StatusCode == Domain.Enum.StatusCode.OK)
             {
@@ -70,5 +89,26 @@ namespace Automarket.Controllers
 
             return View();
         }
+
+        // public IActionResult SaveRecommendation(string userName) => PartialView(userName);
+        //
+        // [HttpPost]
+        // public async Task<IActionResult> SaveRecommendation(RecommendationViewModel model)
+        // {
+        //     if (ModelState.IsValid)
+        //     {
+        //         var response = await _recommendation.Create(model);
+        //         if (response.StatusCode == Domain.Enum.StatusCode.OK)
+        //         {
+        //             return Json(new { description = response.Description });
+        //         }
+        //
+        //         return BadRequest(new { errorMessage = response.Description });
+        //     }
+        //
+        //     var errorMessage = ModelState.Values
+        //         .SelectMany(v => v.Errors.Select(x => x.ErrorMessage)).ToList().Join();
+        //     return StatusCode(StatusCodes.Status500InternalServerError, new { errorMessage });
+        // }
     }
 }

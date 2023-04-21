@@ -26,6 +26,50 @@ namespace Automarket.Service.Implementations
             _logger = logger;
         }
 
+        public IBaseResponse<List<ProfileViewModel>> GetProfiles()
+        {
+            try
+            {
+                // var profiles = _profileRepository.GetAll().Where(x => x.User.Role == Role.User).ToList();
+                var profiles = _profileRepository.GetAll().Where(x => x.User.Role == Role.User)
+                    .Select(x => new ProfileViewModel()
+                    {
+                        Id = x.Id,
+                        Address = x.Address,
+                        Age = x.Age,
+                        UserName = x.User.Name,
+                        Temperature = x.Temperature,
+                        BloodPressure = x.BloodPressure,
+                        GUrineAnalysis = x.GUrineAnalysis,
+                        GBloodTest = x.GBloodTest,
+                        Cholesterol = x.Cholesterol,
+                        Recommendations = x.Recommendations
+                    }).ToList();
+                if (!profiles.Any())
+                {
+                    return new BaseResponse<List<ProfileViewModel>>()
+                    {
+                        Description = "Найдено 0 элементов",
+                        StatusCode = StatusCode.OK
+                    };
+                }
+                
+                return new BaseResponse<List<ProfileViewModel>>()
+                {
+                    Data = profiles,
+                    StatusCode = StatusCode.OK
+                };
+            }
+            catch (Exception ex)
+            {
+                return new BaseResponse<List<ProfileViewModel>>()
+                {
+                    Description = $"[GetHealths] : {ex.Message}",
+                    StatusCode = StatusCode.InternalServerError
+                };
+            }
+        }
+
         public async Task<BaseResponse<ProfileViewModel>> GetProfile(string userName)
         {
             try

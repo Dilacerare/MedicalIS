@@ -10,5 +10,7 @@ namespace Automarket.Domain.Enum
         Moderator = 1,
         [Display(Name = "Админ")]
         Admin = 2,
+        [Display(Name = "Доктор")]
+        Doctor = 3
     }
 }
