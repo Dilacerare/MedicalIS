@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Automarket.DAL.Interfaces;
 using Automarket.Domain.Entity;
 using Automarket.Domain.Extensions;
+using Automarket.Domain.Response;
 using Automarket.Domain.ViewModels.Profile;
 using Automarket.Domain.ViewModels.Recommendation;
 using Automarket.Service.Interfaces;
@@ -10,6 +13,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.EntityFrameworkCore;
 
 namespace Automarket.Controllers
 {
@@ -18,11 +22,14 @@ namespace Automarket.Controllers
         private readonly IProfileService _profileService;
         
         private readonly IRecommendationService _recommendation;
+        
+        private readonly IBaseRepository<Profile> _profileRepository;
 
-        public ProfileController(IProfileService profileService, IRecommendationService recommendation)
+        public ProfileController(IProfileService profileService, IRecommendationService recommendation, IBaseRepository<Profile> profileRepository)
         {
             _profileService = profileService;
             _recommendation = recommendation;
+            _profileRepository = profileRepository;
         }
         
         [Authorize(Roles = "Admin,Doctor")]
@@ -90,25 +97,31 @@ namespace Automarket.Controllers
             return View();
         }
 
-        // public IActionResult SaveRecommendation(string userName) => PartialView(userName);
-        //
-        // [HttpPost]
-        // public async Task<IActionResult> SaveRecommendation(RecommendationViewModel model)
-        // {
-        //     if (ModelState.IsValid)
-        //     {
-        //         var response = await _recommendation.Create(model);
-        //         if (response.StatusCode == Domain.Enum.StatusCode.OK)
-        //         {
-        //             return Json(new { description = response.Description });
-        //         }
-        //
-        //         return BadRequest(new { errorMessage = response.Description });
-        //     }
-        //
-        //     var errorMessage = ModelState.Values
-        //         .SelectMany(v => v.Errors.Select(x => x.ErrorMessage)).ToList().Join();
-        //     return StatusCode(StatusCodes.Status500InternalServerError, new { errorMessage });
-        // }
+        public IActionResult SaveRecommendation(string userName)
+        {
+            // ViewBag.Message = "loh";
+            ViewData["UserName"] = userName;
+            return PartialView();
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> SaveRecommendation(RecommendationViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var response = await _recommendation.Create(model);
+                if (response.StatusCode == Domain.Enum.StatusCode.OK)
+                {
+                    return Json(new { description = response.Description });
+                }
+        
+                return BadRequest(new { errorMessage = response.Description });
+            }
+        
+            var errorMessage = ModelState.Values
+                .SelectMany(v => v.Errors.Select(x => x.ErrorMessage)).ToList().Join();
+            return StatusCode(StatusCodes.Status500InternalServerError, new { errorMessage });
+        }
     }
 }

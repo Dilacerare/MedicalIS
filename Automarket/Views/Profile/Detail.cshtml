@@ -131,6 +131,14 @@
             {
                 <h5 class="card-title mt-1">У вас ещё нет рекомендаций</h5>
             }
+            @if (User.IsInRole("Admin"))
+            {
+                <div class="card col-md-6" style="margin: 10px;">
+                    <div class="card-buttons-group">
+                        <button class='btn btn-success' id='addRecommendation' >Добавить</button>
+                    </div>
+                </div>
+            }
         </div>
     </div>
     @* <div class="col-sm-6"> *@
@@ -239,4 +247,49 @@
             });
         });
     </script>
+    
+    <script src="~/js/modal.js"></script>
+        <script>
+            let modal = $('#modal'); 
+            
+            $('#addRecommendation').on('click', function () {
+               $.ajax({
+                  type: 'GET',
+                  url : '@Url.Action("SaveRecommendation")',
+                  data: '@Model.UserName',
+                  success: function (response) {
+                      modal.find(".modal-body").html(response);
+                      modal.modal('show')
+                  },
+                  failure: function () {
+                    modal.modal('hide')
+                  }
+              });
+           });
+            
+           $('#saveBtn').on('click', function () {
+               const data = $('#formSaveRecommendation').serialize()
+               $.ajax({
+                   type: 'POST',
+                   url: '@Url.Action("SaveRecommendation")',
+                   data: data,
+                   success: function (data) {
+                       Swal.fire({
+                           title: 'Информация',
+                           text: data.description,
+                           icon: 'success',
+                           confirmButtonText: 'Окей'
+                       })
+                   },
+                   error: function (response) {
+                       Swal.fire({
+                           title: 'Информация',
+                           text: response.responseJSON.errorMessage,
+                           icon: 'error',
+                           confirmButtonText: 'Окей'
+                       })
+                   }
+               })
+          });
+        </script>
 }
