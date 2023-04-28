@@ -13,13 +13,15 @@ public class RecommendationService : IRecommendationService
     private readonly IBaseRepository<Recommendation> _recommendationRepository;
     private readonly IBaseRepository<Profile> _proFileRepository;
     private readonly IBaseRepository<User> _userRepository;
+    private readonly IProfileService _profileService;
 
     public RecommendationService(IBaseRepository<Recommendation> recommendationRepository, 
-        IBaseRepository<Profile> proFileRepository, IBaseRepository<User> userRepository)
+        IBaseRepository<Profile> proFileRepository, IBaseRepository<User> userRepository, IProfileService profileService)
     {
         _recommendationRepository = recommendationRepository;
         _proFileRepository = proFileRepository;
         _userRepository = userRepository;
+        _profileService = profileService;
     }
 
     public IBaseResponse<List<Recommendation>> GetRecommendations()
@@ -57,6 +59,7 @@ public class RecommendationService : IRecommendationService
         try
         {
             var recommendation = await _recommendationRepository.GetAll().FirstOrDefaultAsync(x => x.Id == id);
+            var profile = await _profileService.GetProfile(recommendation.ProfileId);
             if (recommendation == null)
             {
                 return new BaseResponse<RecommendationViewModel>()
@@ -68,8 +71,9 @@ public class RecommendationService : IRecommendationService
 
             var data = new RecommendationViewModel()
             {
+                Id = recommendation.Id,
                 AuthorName = recommendation.Author,
-                PatientName = recommendation.Patient.User.Name,
+                PatientName = profile.Data.UserName,
                 Description = recommendation.Description,
                 DateCreate = recommendation.DateCreate.ToString()
             };
@@ -155,7 +159,7 @@ public class RecommendationService : IRecommendationService
         }
     }
 
-    public async Task<IBaseResponse<Recommendation>> Edit(long id, Recommendation model)
+    public async Task<IBaseResponse<Recommendation>> Edit(long id, RecommendationViewModel model)
     {
         try
         {

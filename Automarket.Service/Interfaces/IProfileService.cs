@@ -12,6 +12,8 @@ namespace Automarket.Service.Interfaces
         IBaseResponse<List<ProfileViewModel>> GetProfiles();
         
         Task<BaseResponse<ProfileViewModel>> GetProfile(string userName);
+        
+        Task<BaseResponse<ProfileViewModel>> GetProfile(long id);
 
         Task<BaseResponse<Profile>> Save(ProfileViewModel model);
         

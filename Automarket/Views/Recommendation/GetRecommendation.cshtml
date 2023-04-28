@@ -1,0 +1,45 @@
+﻿@model Automarket.Domain.ViewModels.Recommendation.RecommendationViewModel
+
+@{
+    ViewBag.Title = "Рекоммендация";
+    Layout = "_Layout";
+}
+
+<div style="padding: 5px;"></div>
+<div class="card col-md-12" style="margin: 10px;">
+    <div class="card-buttons-group">
+        @if (User.IsInRole("Admin"))
+        {
+            <a class="btn btn-success" asp-controller="Recommendation" asp-action="Edit" asp-route-id="@Model.Id" style="font-family:'Comic Sans MS'; font-weight: bold;">
+                Редактировать
+            </a>
+        }
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-body">
+                <input asp-for="Id" hidden="hidden"/>
+                <div class="mb-3">
+                    <label class="form-label text-black-50">@Model.AuthorName</label>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label text-black-50">@Model.PatientName</label>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label text-black-50">@Model.Description</label>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label text-black-50">@Model.DateCreate</label>
+
+                </div>
+
+                <div class="card-buttons-group">
+                    <button class='btn btn-primary' id='saveProfileAnalyzes'>Сохранить</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

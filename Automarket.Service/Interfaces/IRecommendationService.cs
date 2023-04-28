@@ -14,5 +14,5 @@ public interface IRecommendationService
 
     Task<IBaseResponse<bool>> DeleteRecommendation(long id);
 
-    Task<IBaseResponse<Recommendation>> Edit(long id, Recommendation model);
+    Task<IBaseResponse<Recommendation>> Edit(long id, RecommendationViewModel model);
 }

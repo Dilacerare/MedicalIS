@@ -106,6 +106,43 @@ namespace Automarket.Service.Implementations
                 };
             }
         }
+        
+        public async Task<BaseResponse<ProfileViewModel>> GetProfile(long id)
+        {
+            try
+            {
+                var profile = await _profileRepository.GetAll()
+                    .Select(x => new ProfileViewModel()
+                    {
+                        Id = x.Id,
+                        Address = x.Address,
+                        Age = x.Age,
+                        UserName = x.User.Name,
+                        Temperature = x.Temperature,
+                        BloodPressure = x.BloodPressure,
+                        GUrineAnalysis = x.GUrineAnalysis,
+                        GBloodTest = x.GBloodTest,
+                        Cholesterol = x.Cholesterol,
+                        Recommendations = x.Recommendations
+                    })
+                    .FirstOrDefaultAsync(x => x.Id == id);
+
+                return new BaseResponse<ProfileViewModel>()
+                {
+                    Data = profile,
+                    StatusCode = StatusCode.OK
+                };
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"[ProfileService.GetProfile] error: {ex.Message}");
+                return new BaseResponse<ProfileViewModel>()
+                {
+                    StatusCode = StatusCode.InternalServerError,
+                    Description = $"Внутренняя ошибка: {ex.Message}"
+                };
+            }
+        }
 
         public async Task<BaseResponse<Profile>> Save(ProfileViewModel model)
         {

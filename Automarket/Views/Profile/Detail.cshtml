@@ -113,13 +113,9 @@
 
                         <tr>
                             <th scope="row">@recommendations.Author</th>
-                            <td>@recommendations.Description</td>
+                            <td>@recommendations.Description.Substring(0, 3) ...</td>
                             <td>
-                                <form asp-controller="" asp-action="" asp-route-id="" method="post">
-                                    <button type="submit" class="btn btn-sm btn-danger">
-                                        Подробнее
-                                    </button>
-                                </form>
+                                <a class="btn btn-sm btn-danger" asp-controller="Recommendation" asp-action="GetRecommendation" asp-route-id="@recommendations.Id">Подробнее</a>
                             </td>
 
                         </tr>
