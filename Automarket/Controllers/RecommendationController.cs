@@ -16,6 +16,8 @@ public class RecommendationController : Controller
 
     private readonly IProfileService _profile;
 
+    private static int _lastRecommendationId;
+
     public RecommendationController(IRecommendationService recommendation, IProfileService profile)
     {
         _recommendation = recommendation;
@@ -25,14 +27,18 @@ public class RecommendationController : Controller
     [HttpGet]
     public async Task<ActionResult> GetRecommendation(int id)
     {
-        var response = await _recommendation.GetRecommendation(id);
-        if (response.StatusCode == Domain.Enum.StatusCode.OK)
+        if (id == 0)
         {
-            return View(response.Data);   
+            id = _lastRecommendationId;
         }
-        return View("Error", $"{response.Description}");
+        var response = await _recommendation.GetRecommendation(id);
+            if (response.StatusCode == Domain.Enum.StatusCode.OK)
+            {
+                return View(response.Data);   
+            }
+            return View("Error", $"{response.Description}");
     }
-    
+
     [HttpGet]
     public IActionResult GetRecommendations()
     {
@@ -43,12 +49,7 @@ public class RecommendationController : Controller
         }
         return View("Error", $"{response.Description}");
     }
-
-    // public async Task<IActionResult> Edit(long id)
-    // {
-    //     var response = await _recommendation.GetRecommendation(id);
-    //     return PartialView("Edit", response.Data);
-    // }
+    
     
     [HttpGet]
     public async Task<ActionResult> Edit(long id)
@@ -67,7 +68,8 @@ public class RecommendationController : Controller
             var response = await _recommendation.Edit(id, model);
             if (response.StatusCode == Domain.Enum.StatusCode.OK)
             {
-                return Json(new { description = response.Description });
+                _lastRecommendationId = (int)id;
+                return RedirectToAction("GetRecommendation", "Recommendation",  id);
             }
 
             return BadRequest(new { errorMessage = response.Description });

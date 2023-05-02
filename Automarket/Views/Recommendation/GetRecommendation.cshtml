@@ -5,19 +5,7 @@
     Layout = "_Layout";
 }
 
-<div style="padding: 5px;"></div>
-<div class="card col-md-12" style="margin: 10px;">
-    <div class="card-buttons-group">
-        @if (User.IsInRole("Admin"))
-        {
-            <a class="btn btn-success" asp-controller="Recommendation" asp-action="Edit" asp-route-id="@Model.Id" style="font-family:'Comic Sans MS'; font-weight: bold;">
-                Редактировать
-            </a>
-        }
-    </div>
-</div>
-
-<div class="row">
+<div class="row pt-4">
     <div class="col-sm-6">
         <div class="card">
             <div class="card-body">
@@ -35,10 +23,15 @@
                     <label class="form-label text-black-50">@Model.DateCreate</label>
 
                 </div>
-
-                <div class="card-buttons-group">
-                    <button class='btn btn-primary' id='saveProfileAnalyzes'>Сохранить</button>
-                </div>
+                
+                @if (User.IsInRole("Admin"))
+                {
+                    <div class="card-buttons-group">
+                        <a class="btn btn-success" asp-controller="Recommendation" asp-action="Edit" asp-route-id="@Model.Id" style="font-family:'Comic Sans MS'; font-weight: bold;">
+                            Редактировать
+                        </a>
+                    </div>
+                }
             </div>
         </div>
     </div>

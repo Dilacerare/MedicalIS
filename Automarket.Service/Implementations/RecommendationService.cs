@@ -75,7 +75,7 @@ public class RecommendationService : IRecommendationService
                 AuthorName = recommendation.Author,
                 PatientName = profile.Data.UserName,
                 Description = recommendation.Description,
-                DateCreate = recommendation.DateCreate.ToString()
+                DateCreate = recommendation.DateCreate.ToString("dd/MM/yyyy")
             };
 
             return new BaseResponse<RecommendationViewModel>()
