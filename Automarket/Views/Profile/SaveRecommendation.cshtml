@@ -1,11 +1,13 @@
-﻿@model Automarket.Domain.ViewModels.Recommendation.RecommendationViewModel
+﻿@using System.Net.Mime
+@model Automarket.Domain.ViewModels.Recommendation.RecommendationViewModel
 
-@* <h2>@ViewBag.Message</h2> *@
+
+
 <form id="formSaveRecommendation">
     <div class="row">
-        <div class="form-group col-md-4">
-            <label asp-for="@Model.PatientName" class="col-form-label text-black-50"></label>
-            <input asp-for="@Model.PatientName" value='@ViewData["UserName"]' type="text" class="form-control">
+        <div class="form-group col-md-12">
+            <label asp-for="@Model.PatientName" hidden="hidden" class="col-form-label text-black-50"></label>
+            <input asp-for="@Model.PatientName" hidden="hidden" value='@ViewBag.Message' type="text" class="form-control">
         </div>
         <div class="form-group col-md-4">
             <label asp-for="@Model.Description" class="col-form-label text-black-50"></label>

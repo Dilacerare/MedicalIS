@@ -100,11 +100,11 @@
             {
                 <h5 class="card-title mt-1">Ваши рекомендации</h5>
                 <table class="table table-striped">
-                    <thead class="table-light">
+                    <thead class="table-light table-fixed">
                     <tr>
-                        <th scope="col">Автор</th>
-                        <th scope="col">Описание</th>
-                        <th scope="col">#</th>
+                        <th scope="col" class="col-sm-2">Автор</th>
+                        <th scope="col" class="col-sm-8">Описание</th>
+                        <th scope="col" class="col-sm-2">#</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -113,9 +113,14 @@
 
                         <tr>
                             <th scope="row">@recommendations.Author</th>
-                            <td>@recommendations.Description.Substring(0, 3) ...</td>
+                            @* <td>@recommendations.Description.Substring(0, 3) ...</td> *@
+                            <td>@recommendations.Description</td>
                             <td>
-                                <a class="btn btn-sm btn-danger" asp-controller="Recommendation" asp-action="GetRecommendation" asp-route-id="@recommendations.Id">Подробнее</a>
+                                <a class="btn btn-sm btn-primary" asp-controller="Recommendation" asp-action="GetRecommendation" asp-route-id="@recommendations.Id">Подробнее</a>
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    <a class="btn btn-sm btn-danger" asp-controller="Profile" asp-action="DeleteRecommendation" asp-route-id="@recommendations.Id">Удалить</a>
+                                }
                             </td>
 
                         </tr>
@@ -129,33 +134,13 @@
             }
             @if (User.IsInRole("Admin"))
             {
-                <div class="card col-md-6" style="margin: 10px;">
-                    <div class="card-buttons-group">
-                        <button class='btn btn-success' id='addRecommendation' >Добавить</button>
-                    </div>
+                <div class="card-buttons-group">
+                    <button class='btn btn-success' id='addRecommendation' >Добавить</button>
                 </div>
+
             }
         </div>
     </div>
-    @* <div class="col-sm-6"> *@
-    @*     <div class="card text-center"> *@
-    @*         <div class="card-header"> *@
-    @*             <ul class="nav nav-tabs card-header-tabs"> *@
-    @*                 <li class="nav-item"> *@
-    @*                     <a class="nav-link active" href="@Url.Action("Index", "Home")">Главная</a> *@
-    @*                 </li> *@
-    @*                 <li class="nav-item"> *@
-    @*                     <a class="nav-link" href="@Url.Action("GetCars", "Car")">Услуги</a> *@
-    @*                 </li> *@
-    @*             </ul> *@
-    @*         </div> *@
-    @*         <div class="card-body"> *@
-    @*             <h5 class="card-title">Special title treatment</h5> *@
-    @*             <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> *@
-    @*             <a href="#" class="btn btn-primary">Go somewhere</a> *@
-    @*         </div> *@
-    @*     </div> *@
-    @* </div> *@
 </div>
 
 @section pageScripts
@@ -245,6 +230,7 @@
     </script>
     
     <script src="~/js/modal.js"></script>
+    <script src="~/js/modal2.js"></script>
         <script>
             let modal = $('#modal'); 
             

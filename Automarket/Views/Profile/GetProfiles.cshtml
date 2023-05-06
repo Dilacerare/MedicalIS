@@ -47,7 +47,7 @@ else
     <div style="padding: 5px;"></div>
     <div class="card col-md-12">
         <table class="table table-striped">
-            <thead class="table-light">
+            <thead class="table-light w-auto">
                 <tr>
                     <th scope="col">Имя</th>
                     <th scope="col">Температура</th>
@@ -74,7 +74,7 @@ else
                     <td>@profile.Cholesterol</td>
                     <td>
                         <form asp-controller="Profile" asp-action="Detail" asp-route-userName="@profile.UserName" method="post">
-                            <button type="submit" class="btn btn-sm btn-danger">
+                            <button type="submit" class="btn btn-sm btn-primary">
                                 Подробнее
                             </button>
                         </form>

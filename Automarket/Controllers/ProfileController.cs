@@ -22,14 +22,14 @@ namespace Automarket.Controllers
         private readonly IProfileService _profileService;
         
         private readonly IRecommendationService _recommendation;
-        
-        private readonly IBaseRepository<Profile> _profileRepository;
 
-        public ProfileController(IProfileService profileService, IRecommendationService recommendation, IBaseRepository<Profile> profileRepository)
+        private static string _lastUserProfile;
+        
+
+        public ProfileController(IProfileService profileService, IRecommendationService recommendation)
         {
             _profileService = profileService;
             _recommendation = recommendation;
-            _profileRepository = profileRepository;
         }
         
         [Authorize(Roles = "Admin,Doctor")]
@@ -85,22 +85,24 @@ namespace Automarket.Controllers
             return StatusCode(StatusCodes.Status500InternalServerError);
         }
         
+        [HttpGet]
         public async Task<IActionResult> Detail(string userName)
         {
             // var userName = User.Identity.Name;
             var response = await _profileService.GetProfile(userName);
             if (response.StatusCode == Domain.Enum.StatusCode.OK)
             {
+                _lastUserProfile = userName;
                 return View(response.Data);   
             }
 
             return View();
         }
 
-        public IActionResult SaveRecommendation(string userName)
+        [HttpGet]
+        public IActionResult SaveRecommendation()
         {
-            // ViewBag.Message = "loh";
-            ViewData["UserName"] = userName;
+            ViewBag.Message = _lastUserProfile;
             return PartialView();
         }
 
@@ -122,6 +124,17 @@ namespace Automarket.Controllers
             var errorMessage = ModelState.Values
                 .SelectMany(v => v.Errors.Select(x => x.ErrorMessage)).ToList().Join();
             return StatusCode(StatusCodes.Status500InternalServerError, new { errorMessage });
+        }
+        
+        public async Task<IActionResult> DeleteRecommendation(long id)
+        {
+            var response = await _recommendation.DeleteRecommendation(id);
+            if (response.StatusCode == Domain.Enum.StatusCode.OK)
+            {
+                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Detail", "Profile", id);
+            }
+            return RedirectToAction("Index", "Home");
         }
     }
 }
