@@ -5,28 +5,28 @@
     <fieldset>
         @Html.HiddenFor(m => m.Id)
         <p>
-            @Html.LabelFor(m => m.AuthorName, "Название книги")
+            @Html.LabelFor(m => m.AuthorName, "Автор рекоммендации")
             <br />
             @Html.EditorFor(m => m.AuthorName)
         </p>
         <p>
-            @Html.LabelFor(m => m.PatientName, "Автор")
+            @Html.LabelFor(m => m.PatientName, "Имя пациента")
             <br />
             @Html.EditorFor(m => m.PatientName)
  
         </p>
         <p>
-            @Html.LabelFor(m => m.Description, "Цена")
+            @Html.LabelFor(m => m.Description, "Описание")
             <br />
             @Html.EditorFor(m => m.Description)
         </p>
         <p>
-            @Html.LabelFor(m => m.DateCreate, "Цена")
+            @Html.LabelFor(m => m.DateCreate, "Дата")
             <br />
             @Html.EditorFor(m => m.DateCreate)
         </p>
         
-        <p><input type="submit" value="Отправить" /></p>
+        <p><input type="submit" value="Сохранить" /></p>
     </fieldset>
 }
 

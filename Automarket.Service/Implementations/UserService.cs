@@ -132,6 +132,43 @@ namespace Automarket.Service.Implementations
             }
         }
 
+        public async Task<IBaseResponse<UserViewModel>> GetUser(long id)
+        {
+            try
+            {
+                var user = await _userRepository.GetAll().FirstOrDefaultAsync(x => x.Id == id);
+                if (user == null)
+                {
+                    return new BaseResponse<UserViewModel>()
+                    {
+                        Description = "Пользователь не найден",
+                        StatusCode = StatusCode.UserNotFound
+                    };
+                }
+
+                var data = new UserViewModel()
+                {
+                    Role = user.Role.GetDisplayName(),
+                    Name = user.Name,
+                    Password = user.Password
+                };
+
+                return new BaseResponse<UserViewModel>()
+                {
+                    StatusCode = StatusCode.OK,
+                    Data = data
+                };
+            }
+            catch (Exception ex)
+            {
+                return new BaseResponse<UserViewModel>()
+                {
+                    Description = $"[GetHealth] : {ex.Message}",
+                    StatusCode = StatusCode.InternalServerError
+                };
+            }
+        }
+
         public async Task<IBaseResponse<bool>> DeleteUser(long id)
         {
             try
@@ -161,6 +198,67 @@ namespace Automarket.Service.Implementations
                 {
                     StatusCode = StatusCode.InternalServerError,
                     Description = $"Внутренняя ошибка: {ex.Message}"
+                };
+            }
+        }
+
+        public async Task<IBaseResponse<User>> Edit(long id, UserViewModel model)
+        {
+            try
+            {
+                var user = await _userRepository.GetAll().FirstOrDefaultAsync(x => x.Id == id);
+                if (user == null)
+                {
+                    return new BaseResponse<User>()
+                    {
+                        Description = "User not found",
+                        StatusCode = StatusCode.CarNotFound
+                    };
+                }
+
+                Role role = Role.User;
+                switch (model.Role)
+                {
+                    case "Пользователь":
+                        role = Role.User;
+                        break;
+                    case "Модератор":
+                        role = Role.Moderator;
+                        break;
+                    case "Админ":
+                        role = Role.Admin;
+                        break;
+                    case "Доктор":
+                        role = Role.Doctor;
+                        break;
+                    default:
+                        return new BaseResponse<User>()
+                        {
+                            Description = "Role not found",
+                            StatusCode = StatusCode.CarNotFound
+                        };
+                }
+
+                user.Name = model.Name;
+                user.Role = role;
+                user.Password = model.Password;
+
+
+                await _userRepository.Update(user);
+
+
+                return new BaseResponse<User>()
+                {
+                    Data = user,
+                    StatusCode = StatusCode.OK,
+                };
+            }
+            catch (Exception ex)
+            {
+                return new BaseResponse<User>()
+                {
+                    Description = $"[Edit] : {ex.Message}",
+                    StatusCode = StatusCode.InternalServerError
                 };
             }
         }

@@ -63,5 +63,33 @@ namespace Automarket.Controllers
             var types = _userService.GetRoles();
             return Json(types.Data);
         }
+        
+        [HttpGet]
+        public async Task<ActionResult> Edit(long id)
+        {
+            var response = await _userService.GetUser(id);
+        
+            return View(response.Data);
+        
+        }
+        
+        [HttpPost]
+        public async Task<IActionResult> Edit(long id, UserViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var response = await _userService.Edit(id, model);
+                if (response.StatusCode == Domain.Enum.StatusCode.OK)
+                {
+                    return RedirectToAction("GetUsers");
+                }
+        
+                return BadRequest(new { errorMessage = response.Description });
+            }
+        
+            var errorMessage = ModelState.Values
+                .SelectMany(v => v.Errors.Select(x => x.ErrorMessage)).ToList().Join();
+            return StatusCode(StatusCodes.Status500InternalServerError, new { errorMessage });
+        }
     }
 }

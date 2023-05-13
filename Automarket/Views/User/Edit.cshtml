@@ -1,0 +1,29 @@
+﻿@model Automarket.Domain.ViewModels.User.UserViewModel
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+@using (Html.BeginForm("Edit", "User", FormMethod.Post))
+{
+    <fieldset>
+        @Html.HiddenFor(m => m.Id)
+        @Html.HiddenFor(m => m.Password)
+        <p>
+            @Html.LabelFor(m => m.Name, "Логин")
+            <br />
+            @Html.EditorFor(m => m.Name)
+        </p>
+        <p>
+            @Html.LabelFor(m => m.Role, "Роль")
+            <br />
+            @Html.EditorFor(m => m.Role)
+ 
+        </p>
+
+
+        <p><input type="submit" value="Сохранить" /></p>
+    </fieldset>
+}
+

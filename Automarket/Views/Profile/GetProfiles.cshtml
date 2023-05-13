@@ -73,11 +73,7 @@ else
                     @* ReSharper disable once HeapView.BoxingAllocation *@
                     <td>@profile.Cholesterol</td>
                     <td>
-                        <form asp-controller="Profile" asp-action="Detail" asp-route-userName="@profile.UserName" method="post">
-                            <button type="submit" class="btn btn-sm btn-primary">
-                                Подробнее
-                            </button>
-                        </form>
+                        <a class="btn btn-sm btn-primary" asp-controller="Profile" asp-action="Detail" asp-route-userName="@profile.UserName">Подробнее</a>
                     </td>
                 </tr>
             }

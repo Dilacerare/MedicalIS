@@ -58,4 +58,32 @@ public class PerfectHealthController : Controller
             .SelectMany(v => v.Errors.Select(x => x.ErrorMessage)).ToList().Join();
         return StatusCode(StatusCodes.Status500InternalServerError, new { errorMessage });
     }
+    
+    [HttpGet]
+    public async Task<ActionResult> Edit(long id)
+    {
+        var response = await _health.GetHealth(id);
+
+        return View(response.Data);
+
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Edit(long id, PerfectHealthViewModel model)
+    {
+        if (ModelState.IsValid)
+        {
+            var response = await _health.Edit(id, model);
+            if (response.StatusCode == Domain.Enum.StatusCode.OK)
+            {
+                return RedirectToAction("GetHealths");
+            }
+
+            return BadRequest(new { errorMessage = response.Description });
+        }
+
+        var errorMessage = ModelState.Values
+            .SelectMany(v => v.Errors.Select(x => x.ErrorMessage)).ToList().Join();
+        return StatusCode(StatusCodes.Status500InternalServerError, new { errorMessage });
+    }
 }

@@ -1,0 +1,42 @@
+﻿@model Automarket.Domain.ViewModels.PerfectHealth.PerfectHealthViewModel
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+@using (Html.BeginForm("Edit", "PerfectHealth", FormMethod.Post))
+{
+    <fieldset>
+        @Html.HiddenFor(m => m.Id)
+        <p>
+            @Html.LabelFor(m => m.Temperature, "Температура")
+            <br />
+            @Html.EditorFor(m => m.Temperature)
+        </p>
+        <p>
+            @Html.LabelFor(m => m.BloodPressure, "Давление")
+            <br />
+            @Html.EditorFor(m => m.BloodPressure)
+ 
+        </p>
+        <p>
+            @Html.LabelFor(m => m.GUrineAnalysis, "Анализ мочи")
+            <br />
+            @Html.EditorFor(m => m.GUrineAnalysis)
+        </p>
+        <p>
+            @Html.LabelFor(m => m.GBloodTest, "Анализ крови")
+            <br />
+            @Html.EditorFor(m => m.GBloodTest)
+        </p>
+        <p>
+            @Html.LabelFor(m => m.Cholesterol, "Анализ крови")
+            <br />
+            @Html.EditorFor(m => m.Cholesterol)
+        </p>
+        
+        
+        <p><input type="submit" value="Сохранить" /></p>
+    </fieldset>
+}
