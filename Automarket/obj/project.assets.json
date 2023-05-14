@@ -1106,6 +1106,17 @@
           }
         }
       },
+      "TLSharp/0.1.0.574": {
+        "type": "package",
+        "compile": {
+          "lib/net46/TLSharp.Core.dll": {},
+          "lib/net46/TeleSharp.TL.dll": {}
+        },
+        "runtime": {
+          "lib/net46/TLSharp.Core.dll": {},
+          "lib/net46/TeleSharp.TL.dll": {}
+        }
+      },
       "Automarket.DAL/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -2899,6 +2910,20 @@
         "version.txt"
       ]
     },
+    "TLSharp/0.1.0.574": {
+      "sha512": "OzLvXyTIZsHkJbX3iZRSb1vQdnkyO5yNcdPK80Snbrpm4kab59FdtijFGQRhe2NVjjKe5TabzxNPH3M0B64Lyw==",
+      "type": "package",
+      "path": "tlsharp/0.1.0.574",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net45/TeleSharp.TL.dll",
+        "lib/net46/TLSharp.Core.dll",
+        "lib/net46/TeleSharp.TL.dll",
+        "tlsharp.0.1.0.574.nupkg.sha512",
+        "tlsharp.nuspec"
+      ]
+    },
     "Automarket.DAL/1.0.0": {
       "type": "project",
       "path": "../Automarket.DAL/Automarket.DAL.csproj",
@@ -2922,7 +2947,8 @@
       "Automarket.Service >= 1.0.0",
       "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation >= 6.0.4",
       "Microsoft.EntityFrameworkCore.SqlServer >= 6.0.4",
-      "NLog.Web.AspNetCore >= 5.0.0-rc2"
+      "NLog.Web.AspNetCore >= 5.0.0-rc2",
+      "TLSharp >= 0.1.0.574"
     ]
   },
   "packageFolders": {
@@ -2983,6 +3009,10 @@
           "NLog.Web.AspNetCore": {
             "target": "Package",
             "version": "[5.0.0-rc2, )"
+          },
+          "TLSharp": {
+            "target": "Package",
+            "version": "[0.1.0.574, )"
           }
         },
         "imports": [
@@ -3007,5 +3037,17 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'TLSharp 0.1.0.574' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
+      "libraryId": "TLSharp",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    }
+  ]
 }

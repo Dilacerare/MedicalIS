@@ -255,6 +255,10 @@
             "NLog.Web.AspNetCore": {
               "target": "Package",
               "version": "[5.0.0-rc2, )"
+            },
+            "TLSharp": {
+              "target": "Package",
+              "version": "[0.1.0.574, )"
             }
           },
           "imports": [
