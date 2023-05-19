@@ -26,14 +26,17 @@ namespace Automarket.Controllers
         private readonly IProfileService _profileService;
         
         private readonly IRecommendationService _recommendation;
+        
+        private readonly IPerfectHealthService _perfectHealth;
 
         private static string _lastUserProfile;
         
 
-        public ProfileController(IProfileService profileService, IRecommendationService recommendation)
+        public ProfileController(IProfileService profileService, IRecommendationService recommendation, IPerfectHealthService perfectHealth)
         {
             _profileService = profileService;
             _recommendation = recommendation;
+            _perfectHealth = perfectHealth;
         }
         
         [Authorize(Roles = "Admin,Doctor")]
@@ -83,10 +86,108 @@ namespace Automarket.Controllers
                 var response = await _profileService.SaveAnalyzes(model);
                 if (response.StatusCode == Domain.Enum.StatusCode.OK)
                 {
-                    return Json(new { description = response.Description });
+                    return Json(new { description = Compare() });
                 }
             }
             return StatusCode(StatusCodes.Status500InternalServerError);
+        }
+
+        public string Compare()
+        {
+            var analyzes = _profileService.GetProfile(_lastUserProfile).Result.Data;
+            var healths = _perfectHealth.GetHealths();
+            int allHealths = 0;
+            int chekHealths = 0;
+
+            string[] profileBorder = analyzes.BloodPressure.Split("/");
+            foreach (var health in healths.Data)
+            {
+                if (!(analyzes.Temperature >= health.Temperature - 0.3 && analyzes.Temperature <= health.Temperature + 0.3))
+                {
+                    allHealths++;
+                    continue;
+                }
+
+                string[] healthBorder = health.BloodPressure.Split("/");
+                if (!(int.Parse(profileBorder[0]) >= int.Parse(healthBorder[0]) - 10 && int.Parse(profileBorder[0]) <= int.Parse(healthBorder[0]) + 10) ||
+                    !(int.Parse(profileBorder[1]) >= int.Parse(healthBorder[1]) - 5 && int.Parse(profileBorder[1]) <= int.Parse(healthBorder[1]) + 5))
+                {
+                    allHealths++;
+                    continue;
+                }
+                
+                if (analyzes.GUrineAnalysis != "Норма")
+                {
+                    allHealths++;
+                    continue;
+                }
+                
+                if (analyzes.GBloodTest != "Норма")
+                {
+                    allHealths++;
+                    continue;
+                }
+                
+                if (!(analyzes.Cholesterol >= health.Cholesterol - 3 && analyzes.Cholesterol <= health.Cholesterol + 3))
+                {
+                    allHealths++;
+                    continue;
+                }
+
+                allHealths++;
+                chekHealths++;
+            }
+
+            string text = "";
+
+            if (allHealths != chekHealths)
+            {
+                string recommed = string.Format("Ваши анализы прошлли проверку {0} из {1} из нашей базы данных, вам выслана рекомендация (см. раздел рекомендаций)", chekHealths, allHealths);
+                if (analyzes.Temperature>= 37)
+                    text =
+                        "Если есть другие симптомы, такие как кашель, боль в горле или затрудненное дыхание, то ему следует немедленно обратиться к врачу.\n";
+                
+                if (int.Parse(profileBorder[0]) > 120)
+                    text = text +
+                           "При высоком давлении, следует обратиться к врачу для получения консультации и лечения. Можно порекомендовать изменение образа жизни, такие как здоровое питание, физическая активность и снижение стресса. В некоторых случаях может потребоваться лекарственное лечение.\t";
+                
+                
+                if (int.Parse(profileBorder[1]) < 80)
+                    text = text +
+                           "При низком давлении в первую очередь следует обратить внимание на свой образ жизни. Важно правильно питаться, употреблять достаточное количество воды, избегать переутомления и стрессовых ситуаций, регулярно заниматься физической активностью. Если изменение образа жизни не помогает, то следует обратиться к врачу для получения консультации и назначения лечения. В некоторых случаях может потребоваться прием лекарственных препаратов для нормализации давления.\t";
+
+                if (analyzes.GUrineAnalysis != "Норма")
+                    text = text + "Возможно, потребуется провести дополнительные анализы мочи, крови или другие исследования для выявления причины отклонений от нормы. Лечение будет зависеть от выявленной причины и может включать в себя прием лекарственных препаратов, изменение образа жизни или другие методы.\t";
+
+                if (analyzes.GBloodTest != "Норма")
+                    text = text + "Возможно, потребуется провести дополнительные анализы крови, ультразвуковое исследование или другие методы для выявления причины отклонений от нормы.\t";
+
+                if (analyzes.Cholesterol > 5.2)
+                    text = text + "Есть риск развития сердечно-сосудистых заболеваний. В таком случае необходимо обратиться к врачу для проведения дополнительных исследований и получения рекомендаций по коррекции уровня холестерина.\t";
+
+                RecommendationViewModel recommendation = new RecommendationViewModel()
+                {
+                    AuthorName = "Admin",
+                    PatientName = _lastUserProfile,
+                    Description = text,
+                    DateCreate = DateTime.Now.ToString()
+                };
+                _recommendation.Create(recommendation);
+                return recommed;
+            }
+            else
+            {
+                return  "Ваши анализы соответствуют норме, вы здоровы";
+            }
+        }
+
+        public ActionResult Details(int id)
+        {
+            // Computer c = comps.FirstOrDefault(com => com.Id == id);
+            // if(c!=null)
+            ViewData["log"] = "loh";
+            return PartialView();
+            // return HttpNotFound();
         }
         
         [HttpGet]
