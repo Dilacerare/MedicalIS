@@ -145,7 +145,7 @@ namespace Automarket.Controllers
                 string recommed = string.Format("Ваши анализы прошлли проверку {0} из {1} из нашей базы данных, вам выслана рекомендация (см. раздел рекомендаций)", chekHealths, allHealths);
                 if (analyzes.Temperature>= 37)
                     text =
-                        "Если есть другие симптомы, такие как кашель, боль в горле или затрудненное дыхание, то ему следует немедленно обратиться к врачу.\n";
+                        "Если есть другие симптомы, такие как кашель, боль в горле или затрудненное дыхание, то следует немедленно обратиться к врачу.\n";
                 
                 if (int.Parse(profileBorder[0]) > 120)
                     text = text +
@@ -167,7 +167,7 @@ namespace Automarket.Controllers
 
                 RecommendationViewModel recommendation = new RecommendationViewModel()
                 {
-                    AuthorName = "Admin",
+                    AuthorName = "MedicalAI",
                     PatientName = _lastUserProfile,
                     Description = text,
                     DateCreate = DateTime.Now.ToString()
@@ -181,15 +181,6 @@ namespace Automarket.Controllers
             }
         }
 
-        public ActionResult Details(int id)
-        {
-            // Computer c = comps.FirstOrDefault(com => com.Id == id);
-            // if(c!=null)
-            ViewData["log"] = "loh";
-            return PartialView();
-            // return HttpNotFound();
-        }
-        
         [HttpGet]
         public async Task<IActionResult> Detail(string userName)
         {

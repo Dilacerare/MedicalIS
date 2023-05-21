@@ -89,10 +89,7 @@
                     <div class="card-buttons-group">
                         <button class='btn btn-primary' id='saveProfileAnalyzes'>Сохранить</button>
                     </div>
-                    <div class="card-buttons-group">
-                        <button class='btn btn-primary' id='lolkek'>Сохранить</button>
-                    </div>
-                    
+
                 </form>
             </div>
         </div>
@@ -201,31 +198,6 @@
                         }
                     });
                 });
-        
-        $('#lolkek').on('click', function (e) {
-                            e.preventDefault();
-                            $.ajax({
-                                url: '@Url.Action("Details", "Profile")',
-                                type: 'POST',
-                                data: '@Model.Id',
-                                success: function (response) {
-                                    Swal.fire({
-                                        title: 'Информация',
-                                        text: "loh",
-                                        icon: 'success',
-                                        confirmButtonText: 'Окей'
-                                    })
-                                },
-                                error: function (data) {
-                                    Swal.fire({
-                                        title: 'Информация',
-                                        text: 'Ошибка валидации',
-                                        icon: 'error',
-                                        confirmButtonText: 'Окей'
-                                    })
-                                }
-                            });
-                        });
         
         $('#saveAccountId').on('click', function (e) {
             e.preventDefault();

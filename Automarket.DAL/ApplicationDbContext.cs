@@ -47,6 +47,13 @@ namespace Automarket.DAL
                         Name = "Moderator",
                         Password = HashPasswordHelper.HashPassowrd("654321"),
                         Role = Role.Moderator
+                    },
+                    new User()
+                    {
+                        Id = 3,
+                        Name = "MedicalAI",
+                        Password = HashPasswordHelper.HashPassowrd("654321"),
+                        Role = Role.Doctor
                     }
                 });
 

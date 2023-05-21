@@ -5,14 +5,14 @@
     ViewBag.Title = "Пользователи";
 }
 
-<div class="card col-md-12" style="margin: 10px;">
-    <div class="card-buttons-group">
-        @if (User.IsInRole("Admin"))
-        {
-            <button class='btn btn-success' id='addUserId'>Добавить</button>   
-        }
-    </div>
-</div>
+@* <div class="card col-md-12" style="margin: 10px;"> *@
+@*     <div class="card-buttons-group"> *@
+@*         @if (User.IsInRole("Admin")) *@
+@*         { *@
+@*             <button class='btn btn-success' id='addUserId'>Добавить</button>    *@
+@*         } *@
+@*     </div> *@
+@* </div> *@
 
 <div style="padding: 10px;"></div>
 <div class="card col-md-12">
@@ -42,6 +42,12 @@
         }
         </tbody>
     </table>
+    <div class="card-buttons-group">
+        @if (User.IsInRole("Admin"))
+        {
+            <button class='btn btn-success' id='addUserId'>Добавить</button>   
+        }
+    </div>
 </div>
 
 @section pageScripts

@@ -1,0 +1,109 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "Услуги";
+    Layout = "_Layout";
+}
+
+<div class="row">
+    <div class="row text-center row-cols-1">
+        <div class="col-sm" style="padding: 10px;">
+            <a asp-controller="Profile" asp-action="Detail" asp-route-userName="@User.Identity.Name" style="text-decoration: none; color: inherit;">
+                <div class="card h-100">
+                    <img src="https://cfcdn.aerzteblatt.de/bilder/2022/11/img271592720.jpg" class="card-img-top card-image pt-2 img-fluid mx-auto" style="max-width: 60%;"/>
+                    <div class="card-body">
+                        <h5 class="card-title">Онлайн-диагностика</h5>
+                        <p class="card-text">Возможность проходить тесты и определять риск различных заболеваний.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-sm" style="padding: 10px;">
+            <a asp-controller="Home" asp-action="WorkOnIt" style="text-decoration: none; color: inherit;">
+            <div class="card">
+                <img src="https://img.freepik.com/premium-vector/online-doctor-consultation-from-laptop-online-consultation-of-a-family-doctor-remote-medical-care-vector-illustration-telemedicine-healthcare-services-ask-a-doctor_419010-603.jpg" class="card-img-top card-image pt-2 img-fluid mx-auto" style="max-width: 50%;"/>
+                <div class="card-body">
+                    <h5 class="card-title">Консультация врача онлайн</h5>
+                    <p class="card-text">Возможность задать вопросы и получить ответы от врача через чат или видеоконференцию.</p>
+                </div>
+            </div>
+            </a>
+        </div>
+        <div class="col-sm" style="padding: 10px;">
+            <a asp-controller="Home" asp-action="WorkOnIt" style="text-decoration: none; color: inherit;">
+            <div class="card">
+                <img src="https://thumbs.dreamstime.com/b/%D0%BC%D0%B5%D0%B4%D0%B8%D1%86%D0%B8%D0%BD%D1%81%D0%BA%D0%B8%D0%B5-%D0%BA%D0%BE%D0%BD%D1%81%D1%83%D0%BB%D1%8C%D1%82%D0%B0%D1%86%D0%B8%D0%B8-%D1%81-%D0%B2%D1%80%D0%B0%D1%87%D0%BE%D0%BC-%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%BD%D0%B5%D1%82-%D0%B2-%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%BD%D0%B5%D1%82%D0%B5-%D0%BC%D0%B5%D0%B4%D0%B8%D1%86%D0%B8%D0%BD%D1%81%D0%BA%D0%BE%D0%B5-190609537.jpg" class="card-img-top card-image pt-2 img-fluid mx-auto" style="max-width: 35%;"/>
+                <div class="card-body">
+                    <h5 class="card-title">Запись на прием к врачу</h5>
+                    <p class="card-text">Возможность выбрать врача и удобное время приема, а также ознакомиться с его расписанием.</p>
+                </div>
+            </div>
+            </a>
+        </div>
+     </div>
+ </div>   
+ <div class="row">
+     <div class="row text-center row-cols-1">
+         <div class="col-sm" style="padding: 10px;">
+             <a asp-controller="Home" asp-action="WorkOnIt" style="text-decoration: none; color: inherit;">
+                 <div class="card">
+                     <img src="https://img.freepik.com/premium-vector/electronic-medical-card_118813-4984.jpg" class="card-img-top card-image pt-2 img-fluid mx-auto" style="max-width: 50%;"/>
+                     <div class="card-body">
+                         <h5 class="card-title">Электронная медицинская карта</h5>
+                         <p class="card-text">Возможность хранить все медицинские данные в одном месте и иметь к ним доступ из любой точки мира.</p>
+                     </div>
+                 </div>
+             </a>
+         </div>
+         <div class="col-sm" style="padding: 10px;">
+             <a asp-controller="Home" asp-action="WorkOnIt" style="text-decoration: none; color: inherit;">
+                 <div class="card">
+                     <img src="https://adindex.ru/files2/publications/2020_04/280922_main.png" class="card-img-top card-image pt-2 img-fluid mx-auto" style="max-width: 50%;"/>
+                     <div class="card-body">
+                         <h5 class="card-title">Заказ лекарств</h5>
+                         <p class="card-text">Возможность заказать лекарства на дом или забрать их в ближайшей аптеке.</p>
+                     </div>
+                 </div>
+             </a>
+         </div>
+         <div class="col-sm" style="padding: 10px;">
+             <a asp-controller="Home" asp-action="WorkOnIt" style="text-decoration: none; color: inherit;">
+                 <div class="card">
+                     <img src="https://static.vecteezy.com/system/resources/previews/001/214/868/large_2x/hands-holding-tablet-chatting-with-doctor-vector.jpg" class="card-img-top card-image pt-2 img-fluid mx-auto" style="max-width: 50%;"/>
+                     <div class="card-body">
+                         <h5 class="card-title">Обучающие материалы</h5>
+                         <p class="card-text">Возможность ознакомиться с информацией о здоровом образе жизни, профилактике заболеваний и лечении различных заболеваний.</p>
+                     </div>
+                 </div>
+             </a>
+         </div>
+     </div>
+ </div>
+<div class="row">
+    <div class="row text-center row-cols-1">
+        <div class="col-sm" style="padding: 10px;">
+            <a asp-controller="Home" asp-action="WorkOnIt" style="text-decoration: none; color: inherit;">
+                <div class="card">
+                    <img src="https://img.freepik.com/premium-vector/online-consultation-or-feedback-concept-laptop-with-a-picture-of-a-female-pharmacist-with-medicines-in-his-hand_531064-7396.jpg" class="card-img-top card-image pt-2 img-fluid mx-auto" style="max-width: 50%;"/>
+                    <div class="card-body">
+                        <h5 class="card-title">Онлайн-консультация фармацевта</h5>
+                        <p class="card-text">Возможность получить консультацию по вопросам выбора и применения лекарств.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-sm" style="padding: 10px;">
+            <a asp-controller="Home" asp-action="WorkOnIt" style="text-decoration: none; color: inherit;">
+                <div class="card">
+                    <img src="https://www.advgazeta.ru/upload/iblock/ff3/budte_bditelny_pri_poluchenii_platnykh_meduslug_1.jpg" class="card-img-top card-image pt-2 img-fluid mx-auto" style="max-width: 50%;"/>
+                    <div class="card-body">
+                        <h5 class="card-title">Организация медицинских услуг</h5>
+                        <p class="card-text">Возможность организовать медицинские услуги на дому, например, вызвать врача на дом или заказать анализы.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+
